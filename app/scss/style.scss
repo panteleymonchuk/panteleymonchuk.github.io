@@ -1,0 +1,349 @@
+@import "variables";
+@import "reset";
+
+.wrapper {
+  background: $color-blue-light;
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  -webkit-box-shadow: 0px 2px 4px $color-shadow;
+  -moz-box-shadow: 0px 2px 4px $color-shadow;
+  box-shadow: 0px 2px 4px $color-shadow;
+}
+
+.sidebar-wrapper {
+  background: $color-blue-light;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 320px;
+  height: 100%;
+  min-height: 800px;
+  color: $color-white;
+  a {
+    color: $color-white;
+    &:hover {
+      color: #cbcbcb;
+    }
+  }
+  .profile-container {
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: $color-white;
+  }
+  .name {
+    font-size: 26px;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .tagline {
+    color: $color-white-opacity;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .profile {
+    margin-bottom: 15px;
+    max-width: 80px;
+  }
+  .contact-list {
+    .fa {
+      margin-right: 15px;
+      font-size: 18px;
+      vertical-align: middle;
+    }
+    li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;  
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .email .fa {
+      font-size: 14px;
+    }
+  }
+  .container-block {
+    padding: 15px 30px;
+  }
+  .container-block-title {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  .degree {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: 400;
+  }
+  .education-container {
+    .item {
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .meta {
+      color: $color-white-opacity;
+      font-size: 12px;
+      font-weight: 400;
+      margin-bottom: 0px;
+      margin-top: 0;
+    }
+    .time {
+      color: $color-white-opacity;
+      font-weight: 400;
+      margin-bottom: 0;
+      font-size: 12px;
+    }
+  }
+  .languages-container .lang-desc {
+    color: $color-white-opacity;
+  }
+  .languages-list, .interests-list {
+    margin-bottom: 0;
+    li {
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .interests-container {
+    display: none;
+  }
+}
+
+.main-wrapper {
+  background: $color-white;
+  padding: 60px;
+  .section-title {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 500;
+    color: $color-blue-dark;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  .summary {
+    text-align: justify;
+  }
+  .section-title .fa {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    display: inline-block;
+    color: $color-white;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background: $color-blue-dark;
+    text-align: center;
+    padding-top: 8px;
+    font-size: 16px;
+    position: relative;
+    top: -2px;
+  }
+  .section {
+    margin-bottom: 60px;
+  }
+  .experiences-section .item {
+    margin-bottom: 30px;
+  }
+  .upper-row {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2px;
+  }
+  .job-title {
+    color: #3F4650;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+  }
+  .time {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #97AAC3;
+  }
+  .company {
+    margin-bottom: 10px;
+    color: #97AAC3;
+  }
+  .project-title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 5px;
+    a {
+      color: $color-blue-default;
+    }
+  }
+  .projects-section {
+    .intro {
+      margin-bottom: 30px;
+    }
+    .item {
+      margin-bottom: 15px;
+    }
+    span {
+      display: block;
+    }
+  }
+  .project-tagline {
+    font-weight: 300;
+    opacity: .8;
+    b {
+      font-weight: 500;
+    }
+  }
+}
+
+.skillset {
+  .item {
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  small {
+    display: block;
+    font-size: 12px;
+  }
+  .level-title {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .level-bar {
+    height: 12px;
+    background: #f5f5f5;
+  }
+  .level-bar-inner {
+    height: 12px;
+    background: #6c92a3;
+  }
+}
+
+.footer {
+  padding: 30px;
+  padding-top: 60px;
+  .copyright {
+    line-height: 1.6;
+    color: #545E6C;
+    font-size: 13px;
+  }
+  .fa-heart {
+    color: #fb866a;
+  }
+}
+
+@media (min-width: 992px) {
+  .skillset {
+    .level-title {
+      display: inline-block;
+      float: left;
+      width: 100%;
+      margin-bottom: 0;
+      position: relative;
+    }
+    h4 {
+      margin-top: 25px;
+    }
+    .level-title small {
+      font-size: 11px;
+    }
+    .level-bar {
+      display: inline-block;
+      width: 100%;
+      float: left;
+      position: relative;
+      top: 1px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-right: 30px;
+  }
+  .sidebar-wrapper {
+    position: static;
+    width: inherit;
+  }
+  .main-wrapper {
+    padding: 30px;
+    .time {
+      position: static;
+      display: block;
+      margin-top: 5px;
+    }
+    .upper-row {
+      margin-bottom: 0;
+    }
+  }
+  .main-wrapper {
+    .time {
+      small {
+        display: block;
+      }
+    }
+  }
+  .sidebar-wrapper {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+  .sidebar-wrapper {
+    .name {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    .contact-container {
+      padding-top: 30px;
+    }
+    .interests-list,
+    .contact-list {
+      li,
+      a {
+        font-size: 12px;
+      }
+      .fa {
+        width: 15px;
+        font-size: 16px;
+      }
+    }
+    .languages-container {
+      .container-block-title {
+        font-size: 14px;
+      }
+    }
+  }
+  .skillset {
+    .level-title {
+      small {
+        font-size: 12px;
+      }
+    }
+  }
+
+}

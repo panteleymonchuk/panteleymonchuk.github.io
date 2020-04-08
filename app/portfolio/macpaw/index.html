@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles/app.css">
+
+
+    <title>Document</title>
+</head>
+<body>
+<div class="b-slider">
+    <div class="slides">
+        <div id="slide-1" class="slide slide-1 slide-disabled">
+            <div class="slide__wrap">
+                <div id="slide-1__eggs" class="slide-1__eggs"></div>
+                <div class="slide-1__right-block">
+                    <img src="img/logo.png" class="slide-1__logo" alt="">
+                    <p class="slide-1__right-text">
+                        Wipe duplicates off the face of your Mac with Gemini 2. It's fast, precide, and adapts to the way you use it.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="slide-2" class="slide slide-2 slide-disabled">
+            <div class="slide__wrap">
+                <div class="slide__images slide-2__images">
+                    <img src="img/cover.jpg" alt="" class="slide__image-item">
+                    <div class="slide-2__shadows">
+                        <div class="slide-2__shadow slide-2__shadow-1"></div>
+                        <div class="slide-2__shadow slide-2__shadow-2"></div>
+                        <div class="slide-2__shadow slide-2__shadow-3"></div>
+                        <div class="slide-2__shadow slide-2__shadow-4"></div>
+                        <div class="slide-2__shadow slide-2__shadow-5"></div>
+                        <div class="slide-2__shadow slide-2__shadow-6"></div>
+                    </div>
+                </div>
+                <div class="slide__text-block slide-2__text">
+                    <h3 class="slide__text-header">Detects Duplicates</h3>
+                    <p class="slide__text-desc">Locate duplicates, even if they're stashed in a folder far, far away. <br/> Gemini's new algorithm is laser accurate at detecting useless copies.</p>
+                </div>
+            </div>
+        </div>
+        <div id="slide-3" class="slide slide-3 slide-disabled">
+            <div class="slide__wrap">
+                <div class="slide__images">
+                    <img src="img/cover--small.jpg" class="slide__image-item" alt="">
+                    <img src="img/cover--small.jpg" class="slide__image-item" alt="">
+                    <img src="img/cover--small.jpg" class="slide__image-item" alt="">
+                </div>
+                <div class="slide__text-block">
+                    <h3 class="slide__text-header">Searches for Similars</h3>
+                    <p class="slide__text-desc">Identical or not, copies are a waste of space. Now, Gemini 2 searches for files that look alike - and puts them into spotlight.</p>
+                </div>
+            </div>
+
+        </div>
+        <div id="slide-4" class="slide slide-4 slide-disabled">
+            <div class="slide-4__white-circle"></div>
+            <div class="slide__wrap">
+
+                <div class="slide__images">
+                    <img src="img/photos.png" alt="" class="slide__image-item slide-4__image-left">
+                    <img src="img/itunes.png" alt="" class="slide__image-item slide-4__image-right">
+                </div>
+                <div class="slide__text-block">
+                    <h3 class="slide__text-header">Scans Photos & iTunes</h3>
+                    <p class="slide__text-desc">Most of your duplicates are probably music files and pics. Gemini 2 finds them in their natular habitat: your iTunes and Photo libraries.</p>
+                </div>
+            </div>
+        </div>
+        <div id="slide-5" class="slide slide-5 slide-disabled">
+            <div class="slide__wrap">
+                <div class="slide__images">
+                    <img src="img/files.png" alt="" class="slide__image-item slide-5__files">
+                    <img src="img/autoselect.png" alt="" class="slide__image-item slide-5__autoselect">
+                </div>
+                <div class="slide__text-block">
+                    <h3 class="slide__text-header">And Learns from You</h3>
+                    <p class="slide__text-desc">As you use Gemini 2, it learns to select and delete duplicates the way you do. Almost like it's human.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="buttons" class="buttons">
+        <button class="buttons__close-btn"></button>
+        <div id="buttons__count-slides" class="buttons__count-slides">1 of 5</div>
+        <a id="buttons__next-btn" class="buttons__next-btn">Next</a>
+    </div>
+</div>
+
+
+    <script src="./assets/GreenSock-JS/src/minified/plugins/CSSPlugin.min.js"></script>
+    <script src="./assets/GreenSock-JS/src/minified/easing/EasePack.min.js"></script>
+    <script src="./assets/GreenSock-JS/src/minified/TweenLite.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
