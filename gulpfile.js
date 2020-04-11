@@ -53,22 +53,28 @@ const pathsDist = {
 /**
  * HTML
  * */
-function buildHtml(cb) {
+function buildHtml() {
   return gulp
-    .src([paths.html + 'index.html'])
+    .src([paths.html + '*.html'])
     .pipe(fileinclude({
       prefix: '@@'
     }))
     .pipe(gulp.dest('./'));
 }
 
-function scssToCss(cb) {
+/**
+ * CSS
+ * */
+function scssToCss() {
   return gulp
-    .src(paths.styles + 'main.scss')
+    .src(paths.styles + '*.scss')
     .pipe(sass())
     .pipe(gulp.dest(pathsDist.styles))
 }
 
+/**
+ * Local server
+ * */
 function browserSync(cb) {
   browsersync.init({
     server: {
@@ -79,11 +85,18 @@ function browserSync(cb) {
   cb();
 }
 
+/**
+ * Watcher
+ * */
 function watchFiles() {
-  gulp.watch(paths.styles, scssToCss)
+  gulp.watch(paths.styles + '**/*.scss', scssToCss);
+  gulp.watch(paths.html + '**/*.html', buildHtml);
+  gulp.watch(pathsDist.styles + '*.css').on('change', browsersync.reload);
+  gulp.watch('./*.html').on('change', browsersync.reload);
 }
 
-const dev = gulp.series(browserSync, scssToCss, watchFiles);
+const build = gulp.series(buildHtml, scssToCss);
+const dev = gulp.series(build, browserSync, watchFiles);
 
 exports.default = dev;
-exports.html = buildHtml;
+exports.build = build;
