@@ -1,0 +1,60 @@
+.services {
+  h3.technologies-header {
+    padding-top: 200px;
+    padding-bottom: 80px;
+  }
+}
+
+.service {
+  //outline: 1px solid black;
+  h4 {
+    font-size: 32px;
+    margin-bottom: 48px;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 3px;
+      bottom: -20px;
+      left: 0;
+      background: #fff;
+    }
+  }
+  ul {
+    padding-left: 14px;
+  }
+  li {
+    font-size: 24px;
+    list-style: none;
+    line-height: 2;
+    padding-left: 32px;
+    position: relative;
+    &::after {
+      content: '';
+      width: 14px;
+      height: 2px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      background: #fff;
+    }
+  }
+}
+
+.stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+
+  .stack-list__item {
+    display: flex;
+    filter: grayscale(1);
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  img {
+    width: 100%;
+  }
+}

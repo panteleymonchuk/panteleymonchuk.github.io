@@ -2,6 +2,9 @@
 const gulp = require('gulp');
 const browsersync = require('browser-sync').create();
 const fileinclude = require('gulp-file-include');
+const ttf2woff2 = require('gulp-ttf2woff2');
+const ttf2woff = require('gulp-ttf2woff');
+const ttf2eot = require('gulp-ttf2eot');
 
 
 var autoprefixer = require('gulp-autoprefixer');
@@ -73,6 +76,32 @@ function scssToCss() {
 }
 
 /**
+ * Fonts
+ * */
+function convertTtf2Woff2 () {
+  return gulp
+    .src("./src/fonts/**/*.ttf")
+    .pipe(ttf2woff2())
+    .pipe(gulp.dest('./dist/fonts/'))
+}
+function convertTtf2Woff () {
+  return gulp
+    .src("./src/fonts/**/*.ttf")
+    .pipe(ttf2woff())
+    .pipe(gulp.dest('./dist/fonts/'))
+}
+function convertTtf2Eot () {
+  return gulp
+    .src("./src/fonts/**/*.ttf")
+    .pipe(ttf2eot())
+    .pipe(gulp.dest('./dist/fonts/'))
+}
+function fontGen() {
+  return gulp.series([convertTtf2Woff2, convertTtf2Woff, convertTtf2Eot]);
+}
+
+
+/**
  * Local server
  * */
 function browserSync(cb) {
@@ -100,3 +129,4 @@ const dev = gulp.series(build, browserSync, watchFiles);
 
 exports.default = dev;
 exports.build = build;
+exports.fontGen = fontGen;
