@@ -4,10 +4,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');
-var watch = require('gulp-watch');
 var browserSync = require('browser-sync');
 var sourcemaps = require('gulp-sourcemaps');
-var less = require('gulp-less');
 
 
 gulp.task('sass', function () {
@@ -28,7 +26,7 @@ gulp.task('sass', function () {
 gulp.task('browserSync', function () {
   browserSync({
     server: {
-      baseDir: 'app'
+      baseDir: '.'
     }
   })
 });
