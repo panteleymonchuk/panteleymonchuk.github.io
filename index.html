@@ -101,12 +101,15 @@
 <!--        <img src="" alt="">-->
 
 <script>
-  var backgrounds = ['255, 105, 0', '255, 169, 0', '82, 175, 45'];
+  var backgrounds = ['255,105,0', '255,169,0', '82,175,45'];
+
   function offset(el) {
     var rect = el.getBoundingClientRect(),
       scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     return rect.top + scrollTop
   }
+
+
 
   var sections = document.querySelectorAll('section');
   var offsets = [];
@@ -128,11 +131,22 @@
     nextSlideOffset = offsets[currentSlideIndex + 1];
     currentSlideOffset = offsets[currentSlideIndex];
 
+    var percentage = 1 - (nextSlideOffset - window.scrollY) / (nextSlideOffset - currentSlideOffset);
 
-    console.log(' --- currentSlideIndex --- ', nextBg,
-    currentBg,
-    nextSlideOffset,
-    currentSlideOffset);
+    if (percentage ===  1 && percentage === 0) {
+      return false;
+    }
+
+    const newColor = nextBg.split(',').map(function(item, index) {
+      const currentBgArr = currentBg.split(",");
+      console.log(' --- item - currentBg[index] --- ');
+      const colorDiff = Math.floor((item - currentBgArr[index]) * percentage);
+      console.log(' --- currentBgArr --- ', currentBgArr);
+      // const colorDiff = (item - v2[i])*(item - v2[i]);
+      return +currentBgArr[index] + colorDiff;
+    });
+    console.log(' --- newColor --- ', newColor);
+    document.body.style.backgroundColor = `rgb(${newColor.join(",")})`;
 
 
   });
