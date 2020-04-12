@@ -99,5 +99,44 @@
     </div>
 </section>
 <!--        <img src="" alt="">-->
+
+<script>
+  var backgrounds = ['255, 105, 0', '255, 169, 0', '82, 175, 45'];
+  function offset(el) {
+    var rect = el.getBoundingClientRect(),
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return rect.top + scrollTop
+  }
+
+  var sections = document.querySelectorAll('section');
+  var offsets = [];
+
+  sections.forEach(function (el) {
+    offsets.push(offset(el))
+  });
+
+  document.addEventListener('scroll', function () {
+    if (window.scrollY > offsets[offsets.length-1]) {
+      return false;
+    }
+    currentSlideIndex = offsets.findIndex(function(offset, index) {
+      return window.scrollY >= offset && window.scrollY < offsets[index + 1];
+    });
+
+    nextBg = backgrounds[currentSlideIndex + 1];
+    currentBg = backgrounds[currentSlideIndex];
+    nextSlideOffset = offsets[currentSlideIndex + 1];
+    currentSlideOffset = offsets[currentSlideIndex];
+
+
+    console.log(' --- currentSlideIndex --- ', nextBg,
+    currentBg,
+    nextSlideOffset,
+    currentSlideOffset);
+
+
+  });
+</script>
+
 </body>
 </html>
