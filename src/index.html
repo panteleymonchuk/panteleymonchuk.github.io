@@ -98,25 +98,53 @@
         </ul>
     </div>
 </section>
-<!--        <img src="" alt="">-->
+<section class="section get-in-touch">
+    <h3 class="technologies-header">Get in touch_</h3>
+    <div class="container">
+        <ul class="portfolio-list row">
+            <li class="col-lg-4">
+                <div class="portfolio__item" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png')">
+                    <a href="" class="portfolio__link">Project name <span class="glyphicon"></span></a>
+                </div>
+            </li>
+            <li class="col-lg-4">
+                <div class="portfolio__item" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png')">
+                    <a href="" class="portfolio__link">Project name <span class="glyphicon"></span></a>
+                </div>
+            </li>
+            <li class="col-lg-4">
+                <div class="portfolio__item" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png')">
+                    <a href="" class="portfolio__link">Project name <span class="glyphicon"></span></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
 
 <script>
-  var backgrounds = ['255,105,0', '255,169,0', '82,175,45'];
+  const backgrounds = ['65,122,186', '255,105,0', '255,169,0', '242,242,242'];
 
   function offset(el) {
-    var rect = el.getBoundingClientRect(),
+    const rect = el.getBoundingClientRect(),
       scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     return rect.top + scrollTop
   }
 
 
 
-  var sections = document.querySelectorAll('section');
-  var offsets = [];
+  const sections = document.querySelectorAll('section');
+  const offsets = [];
 
   sections.forEach(function (el) {
     offsets.push(offset(el))
   });
+
+  currentSlideIndex = offsets.findIndex(function(offset, index) {
+    return window.scrollY >= offset && window.scrollY < offsets[index + 1];
+  });
+  currentBg = backgrounds[currentSlideIndex];
+  document.body.style.backgroundColor = `rgb(${currentBg})`;
+
 
   document.addEventListener('scroll', function () {
     if (window.scrollY > offsets[offsets.length-1]) {
@@ -126,26 +154,29 @@
       return window.scrollY >= offset && window.scrollY < offsets[index + 1];
     });
 
-    nextBg = backgrounds[currentSlideIndex + 1];
-    currentBg = backgrounds[currentSlideIndex];
-    nextSlideOffset = offsets[currentSlideIndex + 1];
-    currentSlideOffset = offsets[currentSlideIndex];
+    const nextBg = backgrounds[currentSlideIndex + 1];
+    const currentBg = backgrounds[currentSlideIndex];
+    const nextSlideOffset = offsets[currentSlideIndex + 1];
+    const currentSlideOffset = offsets[currentSlideIndex];
 
-    var percentage = 1 - (nextSlideOffset - window.scrollY) / (nextSlideOffset - currentSlideOffset);
+    let percentage = 1 - (nextSlideOffset - window.scrollY) / (nextSlideOffset - currentSlideOffset);
+
+    // if ((nextSlideOffset - window.scrollY) / (nextSlideOffset - currentSlideOffset) < 0.25) {
+    //   const seventyFivePercentage = currentSlideOffset + (nextSlideOffset - currentSlideOffset) * 0.75;
+    //   percentage = 1 - (nextSlideOffset - window.scrollY) / (nextSlideOffset - currentSlideOffset);
+    // }
+
+    console.log(' --- percentage --- ', percentage);
 
     if (percentage ===  1 && percentage === 0) {
-      return false;
+      document.body.style.backgroundColor = `rgb(${currentBg})`;
     }
 
     const newColor = nextBg.split(',').map(function(item, index) {
       const currentBgArr = currentBg.split(",");
-      console.log(' --- item - currentBg[index] --- ');
       const colorDiff = Math.floor((item - currentBgArr[index]) * percentage);
-      console.log(' --- currentBgArr --- ', currentBgArr);
-      // const colorDiff = (item - v2[i])*(item - v2[i]);
       return +currentBgArr[index] + colorDiff;
     });
-    console.log(' --- newColor --- ', newColor);
     document.body.style.backgroundColor = `rgb(${newColor.join(",")})`;
 
 
