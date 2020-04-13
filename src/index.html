@@ -139,10 +139,10 @@
     offsets.push(offset(el))
   });
 
-  currentSlideIndex = offsets.findIndex(function(offset, index) {
+  let currentSlideIndex = offsets.findIndex(function(offset, index) {
     return window.scrollY >= offset && window.scrollY < offsets[index + 1];
   });
-  currentBg = backgrounds[currentSlideIndex];
+  let currentBg = backgrounds[currentSlideIndex];
   document.body.style.backgroundColor = `rgb(${currentBg})`;
 
 
@@ -159,27 +159,24 @@
     const nextSlideOffset = offsets[currentSlideIndex + 1];
     const currentSlideOffset = offsets[currentSlideIndex];
 
-    let percentage = 1 - (nextSlideOffset - window.scrollY) / (nextSlideOffset - currentSlideOffset);
+    let percentage = 1;
 
-    // if ((nextSlideOffset - window.scrollY) / (nextSlideOffset - currentSlideOffset) < 0.25) {
-    //   const seventyFivePercentage = currentSlideOffset + (nextSlideOffset - currentSlideOffset) * 0.75;
-    //   percentage = 1 - (nextSlideOffset - window.scrollY) / (nextSlideOffset - currentSlideOffset);
-    // }
-
-    console.log(' --- percentage --- ', percentage);
-
-    if (percentage ===  1 && percentage === 0) {
-      document.body.style.backgroundColor = `rgb(${currentBg})`;
+    if ((nextSlideOffset - window.scrollY) / (nextSlideOffset - currentSlideOffset) < 0.25) {
+      const seventyFivePercentage = currentSlideOffset + (nextSlideOffset - currentSlideOffset) * 0.75;
+      percentage = 1 - (nextSlideOffset - window.scrollY) / (nextSlideOffset - seventyFivePercentage);
     }
 
-    const newColor = nextBg.split(',').map(function(item, index) {
-      const currentBgArr = currentBg.split(",");
-      const colorDiff = Math.floor((item - currentBgArr[index]) * percentage);
-      return +currentBgArr[index] + colorDiff;
-    });
-    document.body.style.backgroundColor = `rgb(${newColor.join(",")})`;
-
-
+    if (percentage ===  1) {
+      document.body.style.backgroundColor = `rgb(${currentBg})`;
+      return false;
+    } else {
+      const newColor = nextBg.split(',').map(function(item, index) {
+        const currentBgArr = currentBg.split(",");
+        const colorDiff = Math.floor((item - currentBgArr[index]) * percentage);
+        return +currentBgArr[index] + colorDiff;
+      });
+      document.body.style.backgroundColor = `rgb(${newColor.join(",")})`;
+    }
   });
 </script>
 
