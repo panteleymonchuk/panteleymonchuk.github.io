@@ -1,16 +1,22 @@
 class Backgrounds {
-    constructor(offsets) {
+    constructor(offsets, backgroundsList) {
         this.getCurrentSlideIndex = () => {
-            return this.offsets.findIndex((offset, index) => {
-                console.log(' --- offset --- ', offset);
-                return window.scrollY >= offset && window.scrollY < this.offsets[index + 1];
+            const reversedOffsets = [...this.offsets.slice().reverse()];
+            const lastIndexOffset = reversedOffsets.findIndex((offset, index) => {
+                return window.scrollY >= offset;
             });
+            return (reversedOffsets.length - 1) - lastIndexOffset;
+        };
+        this.setBackground = (rgb) => {
+            document.body.style.backgroundColor = `rgb(${rgb})`;
         };
         this.run = () => {
             const currentSlideIndex = this.getCurrentSlideIndex();
-            console.log(' --- asdfasdf --- ', currentSlideIndex);
+            const currentBackground = this.backgroundsList[currentSlideIndex];
+            this.setBackground(currentBackground);
         };
         this.offsets = offsets;
+        this.backgroundsList = backgroundsList;
     }
 }
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -20,9 +26,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const rect = el.getBoundingClientRect(), scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         return rect.top + scrollTop;
     });
-    const backgrounds = new Backgrounds(sectionsOffsets);
+    const backgrounds = new Backgrounds(sectionsOffsets, backgroundParams);
+    backgrounds.run();
+    document.body.style.opacity = '1';
     document.addEventListener('scroll', () => {
         backgrounds.run();
     });
-    console.log(' --- sectionsOffsets --- ', sectionsOffsets);
 });

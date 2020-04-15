@@ -1,23 +1,28 @@
-
-
 class Backgrounds {
   offsets: number[];
+  backgroundsList: string[];
 
-  constructor(offsets: number[]) {
+  constructor(offsets: number[], backgroundsList: string[]) {
     this.offsets = offsets;
+    this.backgroundsList = backgroundsList;
   }
 
   private getCurrentSlideIndex = () => {
-    return this.offsets.findIndex((offset, index) => {
-      console.log(' --- offset --- ', offset);
-      return window.scrollY >= offset && window.scrollY < this.offsets[index + 1];
+    const reversedOffsets = [...this.offsets.slice().reverse()];
+    const lastIndexOffset = reversedOffsets.findIndex((offset, index) => {
+      return window.scrollY >= offset;
     });
+    return (reversedOffsets.length - 1) - lastIndexOffset;
+  };
+
+  private setBackground = (rgb: string) => {
+    document.body.style.backgroundColor = `rgb(${rgb})`
   };
 
   run = () => {
     const currentSlideIndex = this.getCurrentSlideIndex();
-    console.log(' --- asdfasdf --- ', currentSlideIndex);
-
+    const currentBackground = this.backgroundsList[currentSlideIndex];
+    this.setBackground(currentBackground);
   };
 }
 
@@ -29,10 +34,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
       scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     return rect.top + scrollTop;
   });
-  const backgrounds = new Backgrounds(sectionsOffsets);
+  const backgrounds = new Backgrounds(sectionsOffsets, backgroundParams);
+  backgrounds.run();
+  document.body.style.opacity = '1';
 
   document.addEventListener('scroll', () => {
     backgrounds.run();
   });
-  console.log(' --- sectionsOffsets --- ', sectionsOffsets);
 });

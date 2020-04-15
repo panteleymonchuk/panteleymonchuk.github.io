@@ -58,20 +58,6 @@
             <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
             <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
             <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
-            <li class="col-lg-1 stack-list__item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt=""></li>
         </ul>
     </div>
 
@@ -98,7 +84,7 @@
         </ul>
     </div>
 </section>
-<section class="section get-in-touch" style="min-height: 102vh;">
+<section class="section get-in-touch">
     <h3 class="technologies-header">Get in touch_</h3>
     <div class="container">
         <ul class="portfolio-list row">
@@ -121,57 +107,6 @@
     </div>
 </section>
 <script src="./dist/scripts/main.js"></script>
-
-<script>
-
-
-
-  const offsets = [];
-
-  sections.forEach(function (el) {
-    offsets.push(offset(el))
-  });
-
-  let currentSlideIndex = offsets.findIndex(function(offset, index) {
-    return window.scrollY >= offset && window.scrollY < offsets[index + 1];
-  });
-  let currentBg = backgrounds[currentSlideIndex];
-  document.body.style.backgroundColor = `rgb(${currentBg})`;
-
-
-  document.addEventListener('scroll', function () {
-    if (window.scrollY > offsets[offsets.length-1]) {
-      return false;
-    }
-    currentSlideIndex = offsets.findIndex(function(offset, index) {
-      return window.scrollY >= offset && window.scrollY < offsets[index + 1];
-    });
-
-    const nextBg = backgrounds[currentSlideIndex + 1];
-    const currentBg = backgrounds[currentSlideIndex];
-    const nextSlideOffset = offsets[currentSlideIndex + 1];
-    const currentSlideOffset = offsets[currentSlideIndex];
-
-    let percentage = 1;
-
-    if ((nextSlideOffset - window.scrollY) / (nextSlideOffset - currentSlideOffset) < 0.25) {
-      const seventyFivePercentage = currentSlideOffset + (nextSlideOffset - currentSlideOffset) * 0.75;
-      percentage = 1 - (nextSlideOffset - window.scrollY) / (nextSlideOffset - seventyFivePercentage);
-    }
-
-    if (percentage ===  1) {
-      document.body.style.backgroundColor = `rgb(${currentBg})`;
-      return false;
-    } else {
-      const newColor = nextBg.split(',').map(function(item, index) {
-        const currentBgArr = currentBg.split(",");
-        const colorDiff = Math.floor((item - currentBgArr[index]) * percentage);
-        return +currentBgArr[index] + colorDiff;
-      });
-      document.body.style.backgroundColor = `rgb(${newColor.join(",")})`;
-    }
-  });
-</script>
 
 </body>
 </html>
