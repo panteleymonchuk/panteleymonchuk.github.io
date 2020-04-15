@@ -6,20 +6,23 @@ const ttf2woff2 = require('gulp-ttf2woff2');
 const ttf2woff = require('gulp-ttf2woff');
 const ttf2eot = require('gulp-ttf2eot');
 
-
+var gulpTypescript = require('gulp-typescript');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
+var ts = gulpTypescript.createProject('./tsconfig.json');
 
 const paths = {
   styles: './src/styles/',
   html: './src/',
+  scripts: './src/scripts/'
 };
 
-const pathsDist = {
-  styles: './dist/styles/'
+const pathsOutput = {
+  styles: './dist/styles/',
+  scripts: './dist/scripts/'
 };
 // gulp.task('sass', function () {
 //   return gulp.src('app/scss/**/style.scss')
@@ -35,23 +38,6 @@ const pathsDist = {
 //       stream: true
 //     }));
 // });
-
-// gulp.task('browserSync', function () {
-//   browserSync({
-//     server: {
-//       baseDir: '.'
-//     }
-//   })
-// });
-
-// gulp.task('watch', function () {
-//   gulp.watch('app/scss/**/*.scss', ['sass']);
-//   gulp.watch('app/**/*.html', browserSync.reload);
-//   gulp.watch('app/**/*.css', browserSync.reload);
-//   gulp.watch('app/**/*.js', browserSync.reload);
-// });
-
-// gulp.task('default', ['watch', 'browserSync']);
 
 /**
  * HTML
@@ -72,7 +58,21 @@ function scssToCss() {
   return gulp
     .src(paths.styles + '*.scss')
     .pipe(sass())
-    .pipe(gulp.dest(pathsDist.styles))
+    .pipe(gulp.dest(pathsOutput.styles))
+}
+
+/**
+ * TypeScript compile
+ * */
+function tsCompile() {
+  return gulp
+    .src(paths.scripts + '*.ts')
+    .pipe(ts({
+      outFile: 'main.js'
+    }))
+    .on('error', function(error) { console.log('error', error) })
+    .pipe(gulp.dest(pathsOutput.scripts))
+
 }
 
 /**
@@ -120,13 +120,16 @@ function browserSync(cb) {
 function watchFiles() {
   gulp.watch(paths.styles + '**/*.scss', scssToCss);
   gulp.watch(paths.html + '**/*.html', buildHtml);
-  gulp.watch(pathsDist.styles + '*.css').on('change', browsersync.reload);
+  gulp.watch(paths.scripts + '**/*.ts', tsCompile);
+  gulp.watch(pathsOutput.styles + '*.css').on('change', browsersync.reload);
+  gulp.watch(pathsOutput.scripts + '*.js').on('change', browsersync.reload);
   gulp.watch('./*.html').on('change', browsersync.reload);
 }
 
-const build = gulp.series(buildHtml, scssToCss);
+const build = gulp.series(buildHtml, scssToCss, tsCompile);
 const dev = gulp.series(build, browserSync, watchFiles);
 
 exports.default = dev;
 exports.build = build;
 exports.fontGen = fontGen;
+exports.ts = tsCompile;

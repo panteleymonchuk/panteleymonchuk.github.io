@@ -98,7 +98,7 @@
         </ul>
     </div>
 </section>
-<section class="section get-in-touch">
+<section class="section get-in-touch" style="min-height: 102vh;">
     <h3 class="technologies-header">Get in touch_</h3>
     <div class="container">
         <ul class="portfolio-list row">
@@ -120,19 +120,12 @@
         </ul>
     </div>
 </section>
+<script src="./dist/scripts/main.js"></script>
 
 <script>
-  const backgrounds = ['65,122,186', '255,105,0', '255,169,0', '242,242,242'];
-
-  function offset(el) {
-    const rect = el.getBoundingClientRect(),
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    return rect.top + scrollTop
-  }
 
 
 
-  const sections = document.querySelectorAll('section');
   const offsets = [];
 
   sections.forEach(function (el) {

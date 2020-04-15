@@ -1,0 +1,11 @@
+{
+  "include": [
+    "src/scripts/*.ts"
+  ],
+  "compilerOptions": {
+    "lib": ["dom", "es6", "es2015.core", "dom.iterable"],
+    "outDir": "./dist/scripts/",
+    "module": "commonjs",
+    "target": "es6"
+  }
+}
