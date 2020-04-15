@@ -76,6 +76,16 @@ function tsCompile() {
 }
 
 /**
+ * Move images
+ * */
+function moveImages () {
+  return gulp
+    .src("./src/images/**/*.*")
+    .pipe(gulp.dest('./dist/images/'))
+}
+
+
+/**
  * Fonts
  * */
 function convertTtf2Woff2 () {
@@ -126,7 +136,7 @@ function watchFiles() {
   gulp.watch('./*.html').on('change', browsersync.reload);
 }
 
-const build = gulp.series(buildHtml, scssToCss, tsCompile);
+const build = gulp.series(buildHtml, scssToCss, tsCompile, moveImages);
 const dev = gulp.series(build, browserSync, watchFiles);
 
 exports.default = dev;
