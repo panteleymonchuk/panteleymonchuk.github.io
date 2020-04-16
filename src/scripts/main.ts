@@ -26,6 +26,74 @@ class Backgrounds {
   };
 }
 
+class Portfolio {
+  modalPortfolio: HTMLElement;
+  modalContent: HTMLElement;
+
+  constructor() {
+    const portfolioItems = document.querySelectorAll('.portfolio__item');
+    this.modalPortfolio = document.querySelector('.modal-portfolio-details');
+    this.modalContent = this.modalPortfolio.querySelector('.modal-portfolio-details__content');
+
+    const modalClose = document.querySelector('.modal-portfolio-details__close-btn');
+
+    portfolioItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        this.clickItemHandler(item);
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      this.modalPortfolio.classList.add('hide');
+      this.modalContent.innerHTML = "";
+    });
+  }
+
+  clickItemHandler = (element) => {
+    this.modalPortfolio.classList.remove('hide');
+    this.modalContent.innerHTML = this.getHtmlFromTemplate();
+    this.initCarousel();
+  };
+
+  getHtmlFromTemplate = () => {
+    // const imaages = imageUrls, title, description, technologies
+
+    return `
+      <div class="modal-portfolio-details__slider-wrapper">
+        <div class="my-slider">
+          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
+          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
+          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
+          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
+          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
+          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
+          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
+        </div>
+      </div>
+      <h3 class="modal-portfolio-details__title">test title</h3>
+      <h4 class="modal-portfolio-details__subtitle">Descriotion</h4>
+      <p class="modal-portfolio-details__description">Desasdfasfdasdfasdfcriotion</p>
+      <h4 class="modal-portfolio-details__subtitle">Technologies used</h4>
+      <ul class="modal-portfolio-details__tech-list">
+          <li>react</li>
+      </ul>
+    `;
+  };
+
+  initCarousel = () => {
+    // @ts-ignore
+    window.tns({
+      container: '.my-slider',
+      mode: 'carousel',
+      items: 1,
+      slideBy: 'page',
+      controls: false,
+      mouseDrag: true,
+      nav: false,
+    });
+  };
+}
+
 class FirstSlide {
   private showText = (selector: string, message: string, cb: () => void = () => {}, timeout = 0) => {
     const selectorNode = document.querySelector(selector);
@@ -53,7 +121,7 @@ class FirstSlide {
 
 window.addEventListener('DOMContentLoaded', (event) => {
   const backgroundParams = ['65,122,186', '255,105,0', '255,169,0', '242,242,242'];
-  const sections = [...document.querySelectorAll('section')];
+  const sections = [...document.querySelectorAll('.section')];
   const sectionsOffsets: number[] = sections.map((el) => {
     const rect = el.getBoundingClientRect(),
       scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -65,6 +133,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   const firstSlide = new FirstSlide();
   firstSlide.runFirstAnimation();
+
+  new Portfolio();
 
   document.addEventListener('scroll', () => {
     backgrounds.run();
