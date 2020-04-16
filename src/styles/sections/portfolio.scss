@@ -47,17 +47,43 @@
   overflow-y: scroll;
   color: #2B2E31;
   padding-bottom: 100px;
+  transform: translateY(0);
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
 
-  &.hide {
-    display: none;
+  &.modal-portfolio-details--hide {
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    transform: translateY(100%);
   }
   .modal-portfolio-details__close-btn {
     position: absolute;
     top: 50px;
     right: 100px;
+    font-size: $font-size-m;
+    border: 0;
+    background: transparent;
+    &:focus {
+    outline: 0;
+  }
   }
   .modal-portfolio-details__slider-wrapper {
     padding-bottom: 40px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .my-slider {
+    height: 400px;
+    overflow: hidden;
   }
   .modal-portfolio-details__title {
     font-size: $font-size-m;

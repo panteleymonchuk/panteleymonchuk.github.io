@@ -44,14 +44,17 @@ class Portfolio {
     });
 
     modalClose.addEventListener('click', () => {
-      this.modalPortfolio.classList.add('hide');
-      this.modalContent.innerHTML = "";
+      this.modalPortfolio.classList.add('modal-portfolio-details--hide');
+      setTimeout(() => {this.modalContent.innerHTML = "";}, 500);
+      document.body.style.overflow = 'visible';
     });
   }
 
   clickItemHandler = (element) => {
-    this.modalPortfolio.classList.remove('hide');
+    this.modalPortfolio.classList.remove('modal-portfolio-details--hide');
+    // this.modalPortfolio.style.transform = 'translateY(0)';
     this.modalContent.innerHTML = this.getHtmlFromTemplate();
+    document.body.style.overflow = 'hidden';
     this.initCarousel();
   };
 
