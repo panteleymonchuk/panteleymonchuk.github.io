@@ -2640,6 +2640,8 @@ ul {
   height: 300px;
   background-size: cover;
   position: relative; }
+  .portfolio .portfolio__item:hover {
+    cursor: pointer; }
 
 .portfolio .portfolio__link {
   position: absolute;

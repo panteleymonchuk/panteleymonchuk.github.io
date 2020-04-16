@@ -1,17 +1,20 @@
 {
   "nullgravity-corporate-site": {
     "title": "asdfasfdafsd",
+    "imageUrls": "redux.png,webpack.png",
     "description": "Description of project",
-    "technologies": "asfas,asdfasdf,asdfasdf,sdfefd",
+    "technologies": "tag1,tag2,tag3,tag4"
   },
   "djangostars-corporate-site": {
     "title": "DS",
+    "imageUrls": "DS",
     "description": "Description of project",
-    "technologies": "asfas,asdfasdf,asdfasdf,sdfefd",
+    "technologies": "asfas,asdfasdf,asdfasdf,sdfefd"
   },
   "molo-finance": {
     "title": "Molo",
+    "imageUrls": "Molo",
     "description": "Description of project",
-    "technologies": "asfas,asdfasdf,asdfasdf,sdfefd",
-  },
+    "technologies": "asfas,asdfasdf,asdfasdf,sdfefd"
+  }
 }

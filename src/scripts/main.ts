@@ -1,3 +1,4 @@
+
 class Backgrounds {
   offsets: number[];
   backgroundsList: string[];
@@ -29,8 +30,10 @@ class Backgrounds {
 class Portfolio {
   modalPortfolio: HTMLElement;
   modalContent: HTMLElement;
+  details: any;
 
-  constructor() {
+  constructor(details) {
+    this.details = details;
     const portfolioItems = document.querySelectorAll('.portfolio__item');
     this.modalPortfolio = document.querySelector('.modal-portfolio-details');
     this.modalContent = this.modalPortfolio.querySelector('.modal-portfolio-details__content');
@@ -51,35 +54,31 @@ class Portfolio {
   }
 
   clickItemHandler = (element) => {
+    const id = element.getAttribute('id');
+    const {title, imageUrls, description, technologies} = this.details[id];
     this.modalPortfolio.classList.remove('modal-portfolio-details--hide');
-    // this.modalPortfolio.style.transform = 'translateY(0)';
-    this.modalContent.innerHTML = this.getHtmlFromTemplate();
+    this.modalContent.innerHTML = this.getHtmlFromTemplate(title, description, technologies, imageUrls);
     document.body.style.overflow = 'hidden';
     this.initCarousel();
   };
 
-  getHtmlFromTemplate = () => {
+  getHtmlFromTemplate = (title, description, technologies, imageUrls) => {
     // const imaages = imageUrls, title, description, technologies
-
+    const technologiesForPast = technologies.split(',').reduce((acc, curr) => {
+      return acc + `<li>${curr}</li>`;
+    }, '');
+    const imagesForPast = imageUrls.split(',').reduce((acc, curr) => {
+      return acc + `<div><img src="./dist/images/${curr}" alt=""></div>`;
+    }, '');
     return `
       <div class="modal-portfolio-details__slider-wrapper">
-        <div class="my-slider">
-          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
-          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
-          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
-          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
-          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
-          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
-          <div style="outline: 1px solid red;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt=""></div>
-        </div>
+        <div class="my-slider">${imagesForPast}</div>
       </div>
-      <h3 class="modal-portfolio-details__title">test title</h3>
+      <h3 class="modal-portfolio-details__title">${title}</h3>
       <h4 class="modal-portfolio-details__subtitle">Descriotion</h4>
-      <p class="modal-portfolio-details__description">Desasdfasfdasdfasdfcriotion</p>
+      <p class="modal-portfolio-details__description">${description}</p>
       <h4 class="modal-portfolio-details__subtitle">Technologies used</h4>
-      <ul class="modal-portfolio-details__tech-list">
-          <li>react</li>
-      </ul>
+      <ul class="modal-portfolio-details__tech-list">${technologiesForPast}</ul>
     `;
   };
 
@@ -122,6 +121,19 @@ class FirstSlide {
   };
 }
 
+function loadJson(path, callback) {
+  const req = new XMLHttpRequest();
+  req.overrideMimeType("application/json");
+  req.open("GET", path, true);
+  req.onreadystatechange = function(){
+    if (req.readyState === 4 && req.status === 200) {
+      const response = JSON.parse(req.responseText);
+      callback(response);
+    }
+  };
+  req.send(null);
+}
+
 window.addEventListener('DOMContentLoaded', (event) => {
   const backgroundParams = ['65,122,186', '255,105,0', '255,169,0', '242,242,242'];
   const sections = [...document.querySelectorAll('.section')];
@@ -137,7 +149,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const firstSlide = new FirstSlide();
   firstSlide.runFirstAnimation();
 
-  new Portfolio();
+  loadJson('./dist/scripts/portfolio.json', (jsonData) => {
+    new Portfolio(jsonData);
+  });
+
 
   document.addEventListener('scroll', () => {
     backgrounds.run();

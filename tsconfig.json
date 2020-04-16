@@ -3,12 +3,13 @@
     "src/scripts/*.ts"
   ],
   "compilerOptions": {
-    "lib": ["dom", "es6", "es2015.core", "dom.iterable"],
+    "lib": ["dom", "es6", "dom.iterable"],
     "outDir": "./dist/scripts/",
-    "module": "commonjs",
-    "target": "es6"
+    "module": "es6",
+    "target": "es6",
+    "moduleResolution": "node",
 //    "strict": true,
-//    "esModuleInterop": true,
-//    "forceConsistentCasingInFileNames": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }
