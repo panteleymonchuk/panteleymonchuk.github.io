@@ -66,7 +66,7 @@ function scssToCss() {
  * */
 function tsCompile() {
   return gulp
-    .src(paths.scripts + '*.ts')
+    .src(paths.scripts + 'main.ts')
     .pipe(ts({
       outFile: 'main.js'
     }))
@@ -82,6 +82,15 @@ function moveImages () {
   return gulp
     .src("./src/images/**/*.*")
     .pipe(gulp.dest('./dist/images/'))
+}
+
+/**
+ * Move images
+ * */
+function moveDB () {
+  return gulp
+    .src("./src/scripts/**/*.json")
+    .pipe(gulp.dest('./dist/scripts/'))
 }
 
 
@@ -131,12 +140,14 @@ function watchFiles() {
   gulp.watch(paths.styles + '**/*.scss', scssToCss);
   gulp.watch(paths.html + '**/*.html', buildHtml);
   gulp.watch(paths.scripts + '**/*.ts', tsCompile);
+  gulp.watch(paths.scripts + '**/*.json', moveDB);
   gulp.watch(pathsOutput.styles + '*.css').on('change', browsersync.reload);
   gulp.watch(pathsOutput.scripts + '*.js').on('change', browsersync.reload);
+  gulp.watch(pathsOutput.scripts + '*.json').on('change', browsersync.reload);
   gulp.watch('./*.html').on('change', browsersync.reload);
 }
 
-const build = gulp.series(buildHtml, scssToCss, tsCompile, moveImages);
+const build = gulp.series(buildHtml, scssToCss, moveDB, tsCompile, moveImages);
 const dev = gulp.series(build, browserSync, watchFiles);
 
 exports.default = dev;

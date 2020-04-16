@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $color-white;
+  font-family: 'PublicSans-Medium', sans-serif;
+  transition: background-color 0.5s ease, opacity 0.5s ease 0.5s;
+  opacity: 0;
+}
+.section {
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 120px;
+
+  h3 {
+    font-size: $font-size-xl;
+    padding-bottom: 120px;
+    text-align: center;
+  }
+}
+
+
+ul {
+  padding: 0;
+  li {
+    list-style: none;
+  }
+}

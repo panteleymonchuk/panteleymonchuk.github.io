@@ -1,4 +1,15 @@
 .portfolio {
+
+  > h3 {
+    padding-bottom: 10px;
+
+  }
+
+  h4 {
+    text-align: center;
+    padding-bottom: 80px;
+  }
+
   .portfolio__item {
     height: 300px;
     background-size: cover;
@@ -10,7 +21,7 @@
     left: 0;
     right: 0;
     padding: 10px;
-    font-size: 16px;
+    font-size: $font-size-xxs;
     color: #2B2E31;
     background-color: rgba(255, 255, 255, 0.7);
     font-weight: bold;
@@ -20,7 +31,7 @@
       padding-bottom: 30px;
     }
     & .glyphicon {
-      font-size: 10px;
+      font-size: $font-size-xxxs;
     }
   }
 }

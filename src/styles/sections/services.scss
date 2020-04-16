@@ -6,38 +6,29 @@
 }
 
 .service {
-  //outline: 1px solid black;
   h4 {
-    font-size: 32px;
+    font-size: $font-size-l;
     margin-bottom: 48px;
     position: relative;
-    &:after {
-      content: '';
-      position: absolute;
-      width: 30px;
-      height: 3px;
-      bottom: -20px;
-      left: 0;
-      background: #fff;
-    }
   }
   ul {
     padding-left: 14px;
   }
   li {
-    font-size: 24px;
+    font-size: $font-size-xs;
     list-style: none;
     line-height: 2;
     padding-left: 32px;
     position: relative;
+    padding-bottom: 10px;
     &::after {
       content: '';
       width: 14px;
       height: 2px;
       position: absolute;
-      top: 50%;
+      top: 15px;
       left: 0;
-      background: #fff;
+      background: $color-white;
     }
   }
 }
@@ -50,9 +41,12 @@
 
   .stack-list__item {
     display: flex;
-    filter: grayscale(1);
+    font-size: $font-size-s;
+    //filter: grayscale(1);
+    justify-content: center;
+    text-align: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
   img {
     width: 100%;

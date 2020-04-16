@@ -2418,6 +2418,30 @@ hr {
 .affix {
   position: fixed; }
 
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  color: #fff;
+  font-family: 'PublicSans-Medium', sans-serif;
+  transition: background-color 0.5s ease, opacity 0.5s ease 0.5s;
+  opacity: 0; }
+
+.section {
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 120px; }
+  .section h3 {
+    font-size: 64px;
+    padding-bottom: 120px;
+    text-align: center; }
+
+ul {
+  padding: 0; }
+  ul li {
+    list-style: none; }
+
 .about-me {
   display: flex;
   flex-direction: column;
@@ -2436,30 +2460,23 @@ hr {
   font-size: 32px;
   margin-bottom: 48px;
   position: relative; }
-  .service h4:after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 3px;
-    bottom: -20px;
-    left: 0;
-    background: #fff; }
 
 .service ul {
   padding-left: 14px; }
 
 .service li {
-  font-size: 24px;
+  font-size: 18px;
   list-style: none;
   line-height: 2;
   padding-left: 32px;
-  position: relative; }
+  position: relative;
+  padding-bottom: 10px; }
   .service li::after {
     content: '';
     width: 14px;
     height: 2px;
     position: absolute;
-    top: 50%;
+    top: 15px;
     left: 0;
     background: #fff; }
 
@@ -2469,11 +2486,20 @@ hr {
   justify-content: center; }
   .stack-list .stack-list__item {
     display: flex;
-    filter: grayscale(1);
+    font-size: 20px;
+    justify-content: center;
+    text-align: center;
     align-items: center;
-    margin-bottom: 20px; }
+    margin-bottom: 30px; }
   .stack-list img {
     width: 100%; }
+
+.portfolio > h3 {
+  padding-bottom: 10px; }
+
+.portfolio h4 {
+  text-align: center;
+  padding-bottom: 80px; }
 
 .portfolio .portfolio__item {
   height: 300px;
@@ -2496,28 +2522,3 @@ hr {
     padding-bottom: 30px; }
   .portfolio .portfolio__link .glyphicon {
     font-size: 10px; }
-
-* {
-  margin: 0;
-  padding: 0; }
-
-body {
-  color: #fff;
-  font-family: 'PublicSans-Medium', sans-serif;
-  transition: background-color 0.5s ease, opacity 0.5s ease 0.5s;
-  opacity: 0; }
-
-.section {
-  min-height: 100vh;
-  outline: 1px solid red;
-  padding-top: 120px;
-  padding-bottom: 120px; }
-  .section h3 {
-    font-size: 64px;
-    padding-bottom: 120px;
-    text-align: center; }
-
-ul {
-  padding: 0; }
-  ul li {
-    list-style: none; }

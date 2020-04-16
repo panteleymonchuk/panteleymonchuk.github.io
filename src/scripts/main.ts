@@ -27,18 +27,17 @@ class Backgrounds {
 }
 
 class FirstSlide {
-  private showText = (selector: string, message: string, cb: () => void = () => {}) => {
+  private showText = (selector: string, message: string, cb: () => void = () => {}, timeout = 0) => {
     const selectorNode = document.querySelector(selector);
     let counter = 0;
     const interval = setInterval(() => {
-      // title.textContent;
       selectorNode.innerHTML = selectorNode.textContent + message[counter];
       counter++;
       if (counter >= message.length) {
         clearInterval(interval);
         cb();
       }
-    }, 50);
+    }, timeout);
   };
 
   public runFirstAnimation = () => {
@@ -46,8 +45,8 @@ class FirstSlide {
     const templateSubtitle = 'I am full-stack developer with focus on problem which your product solve.';
     setTimeout(() => {
       this.showText('.about-me__text-wrap h1', templateTitle, () => {
-        this.showText('.about-me__text-wrap h2', templateSubtitle);
-      });
+        this.showText('.about-me__text-wrap h2', templateSubtitle, () => {}, 20);
+      }, 30);
     }, 500);
   };
 }
