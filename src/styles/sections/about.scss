@@ -3,13 +3,24 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  @media (min-width: 768px) {
+    text-align: left;
+  }
   .about-me__text-wrap {
 
   }
   h1 {
-    font-size: $font-size-xl;
-  }
+    font-size: 48px;
+    @media (min-width: 768px) {
+      font-size: $font-size-xl;
+    }
+
+    }
   h2 {
-    font-size: $font-size-m;
+    font-size: $font-size-s;
+    @media (min-width: 768px) {
+      font-size: $font-size-m;
+    }
   }
 }

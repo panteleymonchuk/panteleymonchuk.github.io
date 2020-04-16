@@ -8,16 +8,24 @@ body {
   font-family: 'PublicSans-Medium', sans-serif;
   transition: background-color 0.5s ease, opacity 0.5s ease 0.5s;
   opacity: 0;
+  min-width: 400px;
 }
 .section {
   min-height: 100vh;
   padding-top: 120px;
   padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   h3 {
-    font-size: $font-size-xl;
-    padding-bottom: 120px;
+    font-size: 48px;
+    padding-bottom: 60px;
     text-align: center;
+    @media (min-width: 768px) {
+      font-size: $font-size-xl;
+      padding-bottom: 120px;
+    }
   }
 }
 

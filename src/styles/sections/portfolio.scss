@@ -8,6 +8,7 @@
   h4 {
     text-align: center;
     padding-bottom: 80px;
+    letter-spacing: 0.5px;
   }
 
   .portfolio__item {
@@ -126,13 +127,17 @@
     transform: translateY(100%);
   }
   .modal-portfolio-details__close-btn {
-    position: absolute;
+    position: fixed;
     top: 50px;
-    right: 100px;
+    right: 50px;
     font-size: $font-size-m;
     border: 0;
     background: transparent;
     z-index: 10;
+    @media (min-width: 768px) {
+      top: 50px;
+      right: 100px;
+    }
     &:focus {
     outline: 0;
   }

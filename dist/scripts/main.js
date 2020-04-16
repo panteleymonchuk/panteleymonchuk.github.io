@@ -3,7 +3,7 @@ class Backgrounds {
         this.getCurrentSlideIndex = () => {
             const reversedOffsets = [...this.offsets.slice().reverse()];
             const lastIndexOffset = reversedOffsets.findIndex((offset) => {
-                return window.scrollY >= offset;
+                return window.scrollY >= offset - window.innerHeight / 2;
             });
             return (reversedOffsets.length - 1) - lastIndexOffset;
         };
@@ -114,7 +114,8 @@ function loadJson(path, callback) {
     req.send(null);
 }
 window.addEventListener('DOMContentLoaded', (event) => {
-    const backgroundParams = ['99,65,186', '33,64,104', '73,100,213', '19,28,57'];
+    // const backgroundParams = ['54,57,60', '33,64,104', '88,82,199', '19,28,57'];
+    const backgroundParams = ['247,171,0', '126,174,209', '33,64,104', '19,28,57'];
     const sections = [...document.querySelectorAll('.section')];
     const sectionsOffsets = sections.map((el) => {
         const rect = el.getBoundingClientRect(), scrollTop = window.pageYOffset || document.documentElement.scrollTop;
