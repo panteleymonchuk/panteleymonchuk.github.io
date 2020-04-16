@@ -41,7 +41,7 @@ class Portfolio {
     const modalClose = document.querySelector('.modal-portfolio-details__close-btn');
 
     portfolioItems.forEach((item) => {
-      item.addEventListener('click', () => {
+      item.querySelector('.portfolio__item-snow-more').addEventListener('click', () => {
         this.clickItemHandler(item);
       });
     });
@@ -63,7 +63,6 @@ class Portfolio {
   };
 
   getHtmlFromTemplate = (title, description, technologies, imageUrls) => {
-    // const imaages = imageUrls, title, description, technologies
     const technologiesForPast = technologies.split(',').reduce((acc, curr) => {
       return acc + `<li>${curr}</li>`;
     }, '');
@@ -135,7 +134,7 @@ function loadJson(path, callback) {
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  const backgroundParams = ['65,122,186', '255,105,0', '255,169,0', '242,242,242'];
+  const backgroundParams = ['99,65,186', '33,64,104', '73,100,213', '19,28,57'];
   const sections = [...document.querySelectorAll('.section')];
   const sectionsOffsets: number[] = sections.map((el) => {
     const rect = el.getBoundingClientRect(),

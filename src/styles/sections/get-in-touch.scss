@@ -1,0 +1,19 @@
+.get-in-touch {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  a, i {
+    color: $color-white;
+    font-size: $font-size-xl;
+  }
+
+  a {
+    transition: all 0.5s ease;
+    display: block;
+    &:hover {
+      transition: all 0.5s ease;
+      transform: translate(-10px, 10px);
+    }
+  }
+}

@@ -2639,26 +2639,58 @@ ul {
 .portfolio .portfolio__item {
   height: 300px;
   background-size: cover;
-  position: relative; }
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden; }
+  .portfolio .portfolio__item .portfolio__item-description,
+  .portfolio .portfolio__item img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+  .portfolio .portfolio__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  .portfolio .portfolio__item .portfolio__description-text {
+    font-size: 20px;
+    text-align: center; }
+  .portfolio .portfolio__item .portfolio__item-description {
+    z-index: 2;
+    padding: 30px 60px;
+    background: #131c3a;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease; }
+  .portfolio .portfolio__item .portfolio__item-snow-more {
+    margin-top: 16px;
+    border: 1px solid #fff;
+    padding: 8px 24px;
+    background: none;
+    border-radius: 19px; }
+    .portfolio .portfolio__item .portfolio__item-snow-more:hover, .portfolio .portfolio__item .portfolio__item-snow-more:focus {
+      cursor: pointer;
+      outline: none; }
   .portfolio .portfolio__item:hover {
     cursor: pointer; }
+    .portfolio .portfolio__item:hover .portfolio__item-description {
+      opacity: 1;
+      -webkit-transition: all .5s ease;
+      -moz-transition: all .5s ease;
+      -ms-transition: all .5s ease;
+      -o-transition: all .5s ease;
+      transition: all .5s ease; }
 
-.portfolio .portfolio__link {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px;
-  font-size: 16px;
-  color: #2B2E31;
-  background-color: rgba(255, 255, 255, 0.7);
-  font-weight: bold;
-  transition: all 500ms ease; }
-  .portfolio .portfolio__link:hover {
-    text-decoration: none;
-    padding-bottom: 30px; }
-  .portfolio .portfolio__link .glyphicon {
-    font-size: 10px; }
+.portfolio .portfolio-list > li {
+  margin-bottom: 30px; }
 
 .modal-portfolio-details {
   position: fixed;
@@ -2666,6 +2698,7 @@ ul {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 10;
   background: #fff;
   overflow-y: scroll;
   color: #2B2E31;
@@ -2689,17 +2722,19 @@ ul {
     right: 100px;
     font-size: 28px;
     border: 0;
-    background: transparent; }
+    background: transparent;
+    z-index: 10; }
     .modal-portfolio-details .modal-portfolio-details__close-btn:focus {
       outline: 0; }
   .modal-portfolio-details .modal-portfolio-details__slider-wrapper {
     padding-bottom: 40px; }
   .modal-portfolio-details img {
     width: 100%;
-    height: 100%;
     object-fit: cover; }
+  .modal-portfolio-details .my-slider,
+  .modal-portfolio-details img {
+    height: 400px; }
   .modal-portfolio-details .my-slider {
-    height: 400px;
     overflow: hidden; }
   .modal-portfolio-details .modal-portfolio-details__title {
     font-size: 28px; }
@@ -2718,3 +2753,18 @@ ul {
       padding: 3px 6px; }
   .modal-portfolio-details .container {
     padding-top: 50px; }
+
+.get-in-touch {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .get-in-touch a, .get-in-touch i {
+    color: #fff;
+    font-size: 64px; }
+  .get-in-touch a {
+    transition: all 0.5s ease;
+    display: block; }
+    .get-in-touch a:hover {
+      transition: all 0.5s ease;
+      transform: translate(-10px, 10px); }
