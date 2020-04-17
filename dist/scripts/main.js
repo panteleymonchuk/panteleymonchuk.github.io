@@ -113,14 +113,17 @@ function loadJson(path, callback) {
     };
     req.send(null);
 }
-window.addEventListener('DOMContentLoaded', (event) => {
-    // const backgroundParams = ['54,57,60', '33,64,104', '88,82,199', '19,28,57'];
-    const backgroundParams = ['247,171,0', '126,174,209', '33,64,104', '19,28,57'];
+function getSectionsOffset() {
     const sections = [...document.querySelectorAll('.section')];
-    const sectionsOffsets = sections.map((el) => {
+    return sections.map((el) => {
         const rect = el.getBoundingClientRect(), scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         return rect.top + scrollTop;
     });
+}
+// const backgroundParams = ['54,57,60', '33,64,104', '88,82,199', '19,28,57'];
+const backgroundParams = ['247,171,0', '126,174,209', '33,64,104', '19,28,57'];
+window.addEventListener('DOMContentLoaded', (event) => {
+    const sectionsOffsets = getSectionsOffset();
     const backgrounds = new Backgrounds(sectionsOffsets, backgroundParams);
     backgrounds.run();
     document.body.style.opacity = '1';
@@ -133,3 +136,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
         backgrounds.run();
     });
 });
+window.onresize = () => {
+    const sectionsOffsets = getSectionsOffset();
+    const backgrounds = new Backgrounds(sectionsOffsets, backgroundParams);
+    backgrounds.run();
+    document.addEventListener('scroll', () => {
+        backgrounds.run();
+    });
+};

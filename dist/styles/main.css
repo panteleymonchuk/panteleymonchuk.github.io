@@ -2562,7 +2562,7 @@ body {
   font-family: 'PublicSans-Medium', sans-serif;
   transition: background-color 0.5s ease, opacity 0.5s ease 0.5s;
   opacity: 0;
-  min-width: 400px; }
+  min-width: 310px; }
 
 .section {
   min-height: 100vh;
@@ -2616,9 +2616,11 @@ ul {
   .service h4 {
     font-size: 28px;
     margin-bottom: 12px;
-    position: relative; }
+    position: relative;
+    text-align: center; }
     @media (min-width: 768px) {
       .service h4 {
+        text-align: center;
         font-size: 32px;
         margin-bottom: 48px; } }
   .service ul {
