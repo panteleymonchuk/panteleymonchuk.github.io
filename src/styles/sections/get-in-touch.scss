@@ -7,10 +7,26 @@
     color: $color-white;
     font-size: $font-size-xl;
   }
-
+  img {
+    width: 100px;
+  }
   a {
+    display: flex;
+    margin: 0 30px;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+  .get-in-touch__contacts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .get-in-touch__contacts-mail {
     transition: all 0.5s ease;
-    display: block;
     &:hover {
       transition: all 0.5s ease;
       transform: translate(-10px, 10px);

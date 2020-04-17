@@ -2796,9 +2796,22 @@ ul {
   .get-in-touch a, .get-in-touch i {
     color: #fff;
     font-size: 64px; }
+  .get-in-touch img {
+    width: 100px; }
   .get-in-touch a {
-    transition: all 0.5s ease;
-    display: block; }
+    display: flex;
+    margin: 0 30px;
+    justify-content: center;
+    align-items: center; }
     .get-in-touch a:hover {
+      cursor: pointer;
+      text-decoration: none; }
+  .get-in-touch .get-in-touch__contacts {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .get-in-touch .get-in-touch__contacts-mail {
+    transition: all 0.5s ease; }
+    .get-in-touch .get-in-touch__contacts-mail:hover {
       transition: all 0.5s ease;
       transform: translate(-10px, 10px); }
