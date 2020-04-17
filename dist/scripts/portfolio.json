@@ -1,20 +1,38 @@
 {
-  "nullgravity-corporate-site": {
-    "title": "asdfasfdafsd",
-    "imageUrls": "redux.png,webpack.png",
-    "description": "Description of project",
-    "technologies": "tag1,tag2,tag3,tag4"
-  },
   "djangostars-corporate-site": {
-    "title": "DS",
-    "imageUrls": "DS",
-    "description": "Description of project",
-    "technologies": "asfas,asdfasdf,asdfasdf,sdfefd"
+    "title": "DjangoStars corporate site",
+    "imageUrls": "portfolio/ds/ds-1.png,portfolio/ds/ds-2.png,portfolio/ds/ds-3.png,portfolio/ds/ds-4.png,portfolio/ds/ds-5.png",
+    "description": "Full redesign. Integrated chats for more fast communications with potential customers. Changed builder of sources from gulp to webpack. Created and integrated design system for core of site (Django Framework) and for blog (WordPress).<br/><a href='http://djangostars.com' target='_blank'>djangostars.com</a>",
+    "technologies": "HTML5,CSS3,SCSS,JavaScript,Python,Django,Webpack"
   },
   "molo-finance": {
-    "title": "Molo",
-    "imageUrls": "Molo",
-    "description": "Description of project",
-    "technologies": "asfas,asdfasdf,asdfasdf,sdfefd"
+    "title": "Molo Finance",
+    "imageUrls": "portfolio/molo/molo-1.png,portfolio/molo/molo-2.png,portfolio/molo/molo-3.png,portfolio/molo/molo-4.png,portfolio/molo/molo-5.png,portfolio/molo/molo-6.png,portfolio/molo/molo-7.png,portfolio/molo/molo-8.png,portfolio/molo/molo-9.png",
+    "description": "Molo is the first true fully digital direct-to-consumer mortgage lender in the UK. When I was working on this project, I was front-end team member. We built application from scratch in short terms. Challenge of this project was fully digital services, include ID checks using web-camera, support of many mortgages, statuses of this mortgages and verification many user information on each step. As result Molo Finance raised £3.7m seed funding.<br/><a href='https://molofinance.com/' target='_blank'>molofinance.com</a>",
+    "technologies": "HTML5,CSS3,React,Redux,Cypress,E2E tests,Unit tests,Redux-observable,Webpack"
+  },
+  "ng": {
+    "title": "Web animations for NullGravity corporate site",
+    "imageUrls": "portfolio/ng/ng-1.png,portfolio/ng/ng-2.png,portfolio/ng/ng-3.png",
+    "description": "Basically, all site is a global animation. It was challenge for me, because it was my first so ambition and hard load project on front side. Most hard part of this site was optimization resources, which required from browser.<br/><a href='https://nullgr.com/' target='_blank'>nullgr.com</a>",
+    "technologies": "HTML5,CSS3,tree.js,Webpack"
+  },
+  "vtb": {
+    "title": "User account in VTB bank",
+    "imageUrls": "portfolio/vtb/vtb-3.png,portfolio/vtb/vtb-4.jpeg,portfolio/vtb/vtb-1.jpg,portfolio/vtb/vtb-5.png,portfolio/vtb/vtb-6.png",
+    "description": "While I working on this project, with team we build full single page application for business clients of bank. That system include chat, for comfortable connect user and support. Most important features like auth using jwt tokens, add own company to cms, load documents, pay bills and generate reports direct in browser was implemented in short terms. That give us improve as a 'startup team' and happy client. Also important feature was work with exist bank's payment services. From technical side: implemented featured architecture, which give for us more boost when we start scale application.",
+    "technologies": "HTML5,CSS3,SCSS,Webpack,WebSocket,socket.io,React,Redux,unit tests,flow"
+  },
+  "bittrex": {
+    "title": "Telegram bot for one of crypto currency exchange",
+    "imageUrls": "portfolio/bittrex/bittrex-1.png,portfolio/bittrex/bittrex-2.png",
+    "description": "I tried to make profit on one of crypto currency exchange. But they had really terrible mobile design, so, I create my own mobile interface using telegram API. This bot include all main functions of exchange like: buy, sell, cancel order, check balance, notify when order is filled, etc. After connect api keys, you can use it all for full power. I run advertising, attracted users, few month after publications, sell it.",
+    "technologies": "NodeJS,Koa,DigitalOcean,Telegram API"
+  },
+  "creator": {
+    "title": "Burger builder for one of US customer",
+    "imageUrls": "portfolio/creator/creator-1.png,portfolio/creator/creator-2.png,portfolio/creator/creator-3.png,portfolio/creator/creator-4.png,portfolio/creator/creator-5.png",
+    "description": "I am as a team member build application for iOS and Android. Main challenges of this applications: not trivial architecture, a lot of animations, work with third-party services, work with payment system which doesn't work in my country. We built application from scratch, in collaboration with customer side, and with a lot of global changes product.<br/><a href='https://apps.apple.com/us/app/burger-creator/id1482057614' target='_blank'>creator</a>",
+    "technologies": "ReactNative,Redux,Webpack"
   }
 }

@@ -5,16 +5,25 @@
   justify-content: center;
   a, i {
     color: $color-white;
-    font-size: $font-size-xl;
+    font-size: 36px;
+    @media (min-width: 768px) {
+      font-size: $font-size-xl;
+    }
   }
   img {
-    width: 100px;
+    width: 40px;
+    @media (min-width: 768px) {
+      width: 100px;
+    }
   }
   a {
     display: flex;
-    margin: 0 30px;
+    margin: 0 10px;
     justify-content: center;
     align-items: center;
+    @media (min-width: 768px) {
+      margin: 0 30px;
+    }
     &:hover {
       cursor: pointer;
       text-decoration: none;
@@ -24,6 +33,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
   }
   .get-in-touch__contacts-mail {
     transition: all 0.5s ease;

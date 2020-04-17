@@ -66,6 +66,7 @@ class Portfolio {
     const technologiesForPast = technologies.split(',').reduce((acc, curr) => {
       return acc + `<li>${curr}</li>`;
     }, '');
+    console.log(' --- imageUrls --- ', imageUrls);
     const imagesForPast = imageUrls.split(',').reduce((acc, curr) => {
       return acc + `<div><img src="./dist/images/${curr}" alt=""></div>`;
     }, '');
@@ -90,7 +91,9 @@ class Portfolio {
       slideBy: 'page',
       controls: false,
       mouseDrag: true,
-      nav: false,
+      nav: true,
+      lazyload: true,
+      lazySelector: '.my-slider img',
     });
   };
 }

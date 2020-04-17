@@ -2678,7 +2678,8 @@ ul {
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0; }
+    right: 0;
+    border-radius: 20px; }
   .portfolio .portfolio__item img {
     width: 100%;
     height: 100%;
@@ -2690,34 +2691,48 @@ ul {
     z-index: 2;
     padding: 30px 60px;
     background: #131c3a;
-    opacity: 1;
+    opacity: 0;
+    transform: translateY(100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -ms-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    transition: all .5s ease; }
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease; }
   .portfolio .portfolio__item .portfolio__item-snow-more {
     margin-top: 16px;
     border: 1px solid #fff;
     padding: 8px 24px;
     background: none;
-    border-radius: 19px; }
+    border-radius: 19px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease; }
     .portfolio .portfolio__item .portfolio__item-snow-more:hover, .portfolio .portfolio__item .portfolio__item-snow-more:focus {
       cursor: pointer;
-      outline: none; }
+      outline: none;
+      background: #fff;
+      color: #2B2E31;
+      -webkit-transition: all .3s ease;
+      -moz-transition: all .3s ease;
+      -ms-transition: all .3s ease;
+      -o-transition: all .3s ease;
+      transition: all .3s ease; }
   .portfolio .portfolio__item:hover {
     cursor: pointer; }
     .portfolio .portfolio__item:hover .portfolio__item-description {
       opacity: 1;
-      -webkit-transition: all .5s ease;
-      -moz-transition: all .5s ease;
-      -ms-transition: all .5s ease;
-      -o-transition: all .5s ease;
-      transition: all .5s ease; }
+      transform: translateY(0);
+      -webkit-transition: all .3s ease;
+      -moz-transition: all .3s ease;
+      -ms-transition: all .3s ease;
+      -o-transition: all .3s ease;
+      transition: all .3s ease; }
 
 .portfolio .portfolio-list > li {
   margin-bottom: 30px; }
@@ -2734,17 +2749,17 @@ ul {
   color: #2B2E31;
   padding-bottom: 100px;
   transform: translateY(0);
-  -webkit-transition: all .5s ease;
-  -moz-transition: all .5s ease;
-  -ms-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease; }
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease; }
   .modal-portfolio-details.modal-portfolio-details--hide {
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -ms-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    transition: all .5s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
     transform: translateY(100%); }
   .modal-portfolio-details .modal-portfolio-details__close-btn {
     position: fixed;
@@ -2756,7 +2771,7 @@ ul {
     z-index: 10; }
     @media (min-width: 768px) {
       .modal-portfolio-details .modal-portfolio-details__close-btn {
-        top: 50px;
+        top: 30px;
         right: 100px; } }
     .modal-portfolio-details .modal-portfolio-details__close-btn:focus {
       outline: 0; }
@@ -2764,10 +2779,14 @@ ul {
     padding-bottom: 40px; }
   .modal-portfolio-details img {
     width: 100%;
-    object-fit: cover; }
+    object-fit: contain; }
   .modal-portfolio-details .my-slider,
   .modal-portfolio-details img {
     height: 400px; }
+    @media (max-width: 767px) {
+      .modal-portfolio-details .my-slider,
+      .modal-portfolio-details img {
+        height: 200px; } }
   .modal-portfolio-details .my-slider {
     overflow: hidden; }
   .modal-portfolio-details .modal-portfolio-details__title {
@@ -2779,7 +2798,8 @@ ul {
     margin-top: 30px;
     margin-bottom: 10px; }
   .modal-portfolio-details .modal-portfolio-details__tech-list {
-    display: flex; }
+    display: flex;
+    flex-wrap: wrap; }
     .modal-portfolio-details .modal-portfolio-details__tech-list li {
       margin: 10px 10px 10px 0;
       background: #b3b3b3;
@@ -2787,6 +2807,25 @@ ul {
       padding: 3px 6px; }
   .modal-portfolio-details .container {
     padding-top: 50px; }
+    @media (max-width: 767px) {
+      .modal-portfolio-details .container {
+        padding-top: 100px; } }
+  .modal-portfolio-details .tns-outer {
+    display: flex;
+    flex-direction: column-reverse; }
+  .modal-portfolio-details .tns-nav {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center; }
+    .modal-portfolio-details .tns-nav button {
+      background: none;
+      width: 10px;
+      height: 10px;
+      border: 2px solid #3b3b3b;
+      border-radius: 50%;
+      margin: 0 3px; }
+      .modal-portfolio-details .tns-nav button.tns-nav-active {
+        background: #3b3b3b; }
 
 .get-in-touch {
   text-align: center;
@@ -2795,21 +2834,31 @@ ul {
   justify-content: center; }
   .get-in-touch a, .get-in-touch i {
     color: #fff;
-    font-size: 64px; }
+    font-size: 36px; }
+    @media (min-width: 768px) {
+      .get-in-touch a, .get-in-touch i {
+        font-size: 64px; } }
   .get-in-touch img {
-    width: 100px; }
+    width: 40px; }
+    @media (min-width: 768px) {
+      .get-in-touch img {
+        width: 100px; } }
   .get-in-touch a {
     display: flex;
-    margin: 0 30px;
+    margin: 0 10px;
     justify-content: center;
     align-items: center; }
+    @media (min-width: 768px) {
+      .get-in-touch a {
+        margin: 0 30px; } }
     .get-in-touch a:hover {
       cursor: pointer;
       text-decoration: none; }
   .get-in-touch .get-in-touch__contacts {
     display: flex;
     align-items: center;
-    justify-content: center; }
+    justify-content: center;
+    flex-wrap: wrap; }
   .get-in-touch .get-in-touch__contacts-mail {
     transition: all 0.5s ease; }
     .get-in-touch .get-in-touch__contacts-mail:hover {
